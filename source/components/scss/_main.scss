@@ -1,0 +1,15 @@
+body {
+	color: #fff;
+	font-family: $Roboto;
+	font-style: normal;
+	font-weight: 400;
+	min-width: 320px;
+}
+a {
+	color: inherit;
+	&:hover, &:focus {
+		text-decoration: none;
+		color: inherit;
+		outline: none;
+	}
+}

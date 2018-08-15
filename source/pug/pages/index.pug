@@ -1,0 +1,64 @@
+extends ../templates/base
+
+block variables
+	- var classBody = 'index-page';
+	- var classWrapper = 'index';
+
+block title
+	title Index
+
+block main
+	.main
+		.main__block.container
+			.main__head
+				.main__title
+					p Select currency to exchange:
+				.main__select
+					select.selectpicker.custom-picker(title='USD')
+						option(value='') USD
+						option(value='') EUR
+						option(value='') RUB
+						option(value='') GBR
+			.main__main
+				ul.main__list.row
+					mixin item(className, name, num)
+						li.col-sm-4
+							div(class="main__item" + className + "")
+								.main__item-title
+									p #{name}
+								.main__item-img
+									img(src=require("../../components/images/img-" + num + '.png'), alt="")
+								.main__item-price
+									p Price:
+									span $22 526.92
+								.main__item-percent
+									p Percent change
+									span(class="checkbox", id="check" + num)
+										label(for='checkbox' + num)
+											input(type='checkbox', name='checkbox' + num, id='checkbox' + num)
+											.checkbox-block
+								ul.main__item-list
+									li
+										.main__item-data
+											p Hour change
+										.main__item-val(id="change" + num + "_1")
+											span
+									li
+										.main__item-data
+											p Day change
+										.main__item-val(id="change" + num + "_2")
+											span
+									li
+										.main__item-data
+											p Week change
+										.main__item-val(id="change" + num + "_3")
+											span
+									li
+										.main__item-data
+											p Month change
+										.main__item-val(id="change" + num + "_4")
+											span
+					- var item = " main__item--";
+					+item(item + 'eth', 'Ethereum', '1')
+					+item(item + 'lit', 'Litecoin', '2')
+					+item(item + 'bit', 'Bitcoin', '3')
